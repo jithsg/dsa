@@ -30,9 +30,20 @@ class Linkedlist:
     def add_to_head(self, node):
         if self.head is None:
             self.head = node
+            return 
         
         node.next = self.head
         self.head = node
+        
+    def remove_from_head(self):
+        if self.head is None:
+            return None
+        
+        old_head = self.head
+        self.head = self.head.next
+        old_head.next = None
+        return old_head
+        
         
         
 
@@ -52,6 +63,8 @@ n2.set_next(n3)
 n0 =Node(0)
 
 l.add_to_head(n0)
+l.remove_from_head()
+l.remove_from_head()
 
 for item in l:
     print(item.data)
