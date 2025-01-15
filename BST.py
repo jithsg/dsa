@@ -100,6 +100,25 @@ class BSTNode:
             
         if self.right:
             self.right.in_order()
+            
+            
+    def exists(self, val):
+        if val == self.val:
+            return True
+        
+        if val< self.val:
+            if self.left is None:
+                return False
+            
+            return self.left.exists(val)
+            
+            
+        if self.right is None:
+            return False
+        return self.right.exists(val)
+        
+        
+            
     
     
     
@@ -110,5 +129,5 @@ root.insert(6)
 root.insert(12)
 root.insert(7)
 root.insert(11)	
-root.in_order()
+print(root.exists(0))
             
