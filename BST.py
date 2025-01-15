@@ -88,14 +88,14 @@ class BSTNode:
         if self.right:
             self.right.post_order()
             
-        if self.val:
+        if self.val is not None:
             print(self.val)
             
     def in_order(self):
         if self.left:
             self.left.in_order()
             
-        if self.val:
+        if self.val is not None:
             print(self.val)
             
         if self.right:
