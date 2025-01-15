@@ -12,7 +12,7 @@ class BSTNode:
         
         if val == self.val:
             return
-        
+
         if val < self.val:
             if self.left:
                 self.left.insert(val)
@@ -45,8 +45,6 @@ class BSTNode:
         if self.val is None:
             return None
         
-        if val== self.val:
-            return 
         
         if val < self.val:
             if self.left:
