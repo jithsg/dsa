@@ -80,6 +80,17 @@ class BSTNode:
         if self.right:  # Traverse the right subtree
             self.right.pre_order()
     
+    def post_order(self):
+        
+        if self.left:
+            self.left.post_order()
+            
+        if self.right:
+            self.right.post_order()
+            
+        if self.val:
+            print(self.val)
+    
     
     
     
@@ -89,5 +100,5 @@ root.insert(6)
 root.insert(12)
 root.insert(7)
 root.insert(11)	
-root.pre_order()
+root.post_order()
             
