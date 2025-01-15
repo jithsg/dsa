@@ -31,5 +31,53 @@ class BSTNode:
         current = self
         while current.left is not None:
             current = current.left
-        return current.data
+        return current.val
+    
+    
+    def find_max(self):
+        current = self
+        while current.right is not None:
+            current = current.right
+        return current.val
+    
+    def delete(self, val):
+        
+        if self.val is None:
+            return None
+        
+        if val== self.val:
+            return 
+        
+        if val < self.val:
+            if self.left:
+                self.left = self.left.delete(val)
+            return self
+        
+        if val > self.val:
+            if self.right:
+                self.right = self.right.delete(val)
+            return self
+        
+        if self.left is None:
+            return self.right
+        
+        if self.right is None:
+            return self.left
+        
+        
+        successor = self.right
+        while self.left:
+            successor = successor.left
+        self.val = successor.val
+        self.right = self.right.delete(successor.val)
+        return self
+    
+    
+        
+root=BSTNode(10)
+root.insert(6)
+root.insert(12)
+root.insert(7)
+root.insert(11)	
+root.delete(10)
             
