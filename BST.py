@@ -70,6 +70,18 @@ class BSTNode:
         self.right = self.right.delete(successor.val)
         return self
     
+    def pre_order(self):
+        if self.val is not None:  # Check if the current node has a value
+            print(self.val)  # Print the value of the current node
+
+        if self.left:  # Traverse the left subtree
+            self.left.pre_order()
+
+        if self.right:  # Traverse the right subtree
+            self.right.pre_order()
+    
+    
+    
     
         
 root=BSTNode(10)
@@ -77,5 +89,5 @@ root.insert(6)
 root.insert(12)
 root.insert(7)
 root.insert(11)	
-root.delete(10)
+root.pre_order()
             
