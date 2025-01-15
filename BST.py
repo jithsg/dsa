@@ -64,7 +64,7 @@ class BSTNode:
         
         
         successor = self.right
-        while self.left:
+        while successor.left:
             successor = successor.left
         self.val = successor.val
         self.right = self.right.delete(successor.val)
