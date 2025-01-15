@@ -90,6 +90,16 @@ class BSTNode:
             
         if self.val:
             print(self.val)
+            
+    def in_order(self):
+        if self.left:
+            self.left.in_order()
+            
+        if self.val:
+            print(self.val)
+            
+        if self.right:
+            self.right.in_order()
     
     
     
@@ -100,5 +110,5 @@ root.insert(6)
 root.insert(12)
 root.insert(7)
 root.insert(11)	
-root.post_order()
+root.in_order()
             
