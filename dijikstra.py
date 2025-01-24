@@ -1,6 +1,6 @@
 
 import heapq
-def dijkstra(graph, source):
+def dijkstra(graph, source, end):
     priority_queue = []
     heapq.heapify(priority_queue)
     distances= {node: float("inf") for node in graph}
@@ -22,7 +22,25 @@ def dijkstra(graph, source):
                 distances[neighbor] = new_distance
                 heapq.heappush(priority_queue, (new_distance, neighbor))
                 previous[neighbor] = current_node
-    return distances, previous
+                
+    
+    
+    current = end
+    path =[]
+    
+    while current is not None:
+        path.append(current)
+        current = previous[current]
+    path.reverse()
+    
+    return path
+
+
+
+    
+
+    
+
 
 
 
@@ -36,7 +54,7 @@ graph = {
 # Run Dijkstra's algorithm
 start_node = 'A'
 
-distances, previous = dijkstra(graph, start_node)
+print(dijkstra(graph, start_node, 'C'))
 
                 
                 
