@@ -1,4 +1,4 @@
-def bellman_ford(graph, start):
+def bellman_ford(graph, start, end):
     distances = {node: float("inf") for node in graph}
     predecessors = {node:None for node in graph}
     distances[start]=0
@@ -17,7 +17,17 @@ def bellman_ford(graph, start):
                 if new_distance < distances[neighbor]:
                     raise ValueError("Negative weights detected")
                 
-    return distances, predecessors
+    path= []
+    current = end
+    
+    while current is not None:
+        path.append(current)
+        current = predecessors[current]
+    path.reverse()
+    
+    return path
+    
+    
 
 
 graph = {
@@ -26,7 +36,6 @@ graph = {
     'C': {'A': 4, 'B': 2, 'D': 1},
     'D': {'B': 5, 'C': 1}
 	}
-distances, predecessors = bellman_ford(graph, 'A')
+path = bellman_ford(graph, 'A', 'D')
 
-print(distances)
-print(predecessors)
+print(path)
