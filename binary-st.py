@@ -38,7 +38,16 @@ class BST:
         print(f'Depth= {self.depth} and Value {self.value}')
         if self.left is not None:
             self.right.in_order()
-        
+            
+    def maximum(self):
+        if self.right is None:
+            return self.value
+        return self.right.maximum()
+    
+    def minimum(self):
+        if self.left is None:
+            return self.value
+        return self.left.minimum()
         
         
                 
@@ -48,4 +57,5 @@ b.insert(125)
 b.insert(25)
 b.insert(75)
 
-print(b.in_order())
+print(b.maximum())
+print(b.minimum())
