@@ -51,6 +51,39 @@ class BST:
             if self.left is None:
                 return "Not found"
             return self.right.search(value)
+    
+    def find_min(self):
+        if self.left is None:
+            return self.value
+        return self.left.find_min()
+    
+    def delete(self, value):
+        if self.value is None:
+            return None
+        
+        if value < self.value:
+            if self.left:
+                self.left = self.left.delete(value)
+        elif value > self.value:
+            if self.right:
+                self.right= self.right.delete(value)
+        else: # self.val = value
+            if self.left is None and self.right is None: #no child nodes
+                return None
+            
+            if self.left is None: #one child
+                return self.right
+            if self.right is None:
+                return self.left
+            
+            min_val = self.right.find_min() #2 child nodes
+            self.value = min_val
+            self.right = self.right.delete(min_val)
+            
+        return self
+                
+        
+        
         
     
             
@@ -63,4 +96,7 @@ b.insert(125)
 b.insert(25)
 b.insert(10)
 
-print(b.search(15))
+print(b.delete(25))
+b.inorder()
+print(b.delete(125))
+b.inorder()
