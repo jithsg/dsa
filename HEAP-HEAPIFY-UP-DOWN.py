@@ -14,14 +14,26 @@ def heapify_down(arr, n, index):
         arr[index], arr[smallest] = arr[smallest], arr[index]
         heapify_down(arr, n, smallest)
         
+# def heapify_up(arr, index):
+    
+#     parent = (index - 1)//2
+    
+#     while index >0 and arr[parent] > arr[index]:
+#         arr[parent], arr[index] = arr[index], arr[parent]
+#         index = parent
+#         parent = (index - 1)//2
+
+
 def heapify_up(arr, index):
+    if index == 0:
+        return
+    parent = (index - 1) // 2
     
-    parent = (index - 1)//2
-    
-    while index >0 and arr[parent] > arr[index]:
+    if arr[parent] >  arr[index]:
         arr[parent], arr[index] = arr[index], arr[parent]
-        index = parent
-        parent = (index - 1)//2
+        heapify_up(arr, parent)
+        
+        
 
 def insert(arr, value):
     arr.append(value)
@@ -53,16 +65,24 @@ def heapsort(arr):
         arr[0], arr[i] = arr[i], arr[0]
         heapify_down(arr, i, 0)
     return arr
+
+def build_min_heap(arr):
+    n = len(arr)
+    # Start heapifying from the last non-leaf node and move up
+    for i in range(n // 2 - 1, -1, -1):
+        heapify_down(arr, n, i)
     
 # arr = [1, 3, 6, 5, 9, 8, 10]
-arr=[10, 5, 8, 3, 1, 9, 4]
+# arr=[10, 5, 8, 3, 1, 9, 4]
 
-print(heapsort(arr))
+# print(heapsort(arr))
 # print("Original array:", arr)
 # print("After heapify:", heapify(arr))
 
+arr = [2, 4, 5, 10, 8]
 
-    
+insert(arr, 1)
+print(arr)
     
         
 
