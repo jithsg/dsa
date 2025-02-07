@@ -38,6 +38,15 @@ def heapify(arr):
     for i in range(n//2-1, -1, -1):
         heapify_down(arr, len(arr), i)
         
+def heapsort(arr):
+    heapify(arr)
+    for index in range(len(arr)-1, 0, -1):
+        arr[0], arr[index] = arr[index], arr[0]
+        heapify_down(arr, index, 0)
+    return arr
+        
+        
+        
     
 # arr = [2, 4, 5, 10, 8]
 arr= [10, 8, 5, 4, 2]
@@ -48,5 +57,6 @@ arr= [10, 8, 5, 4, 2]
 heapify(arr)
 print(arr)
     
+print(heapsort(arr))
         
         
