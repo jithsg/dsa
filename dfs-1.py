@@ -13,7 +13,14 @@ def dfs(graph, vertex, visited):
             
         
         
-                
+# def dfs(graph, vertex, visited):
+#     if vertex not in visited:
+#         print(vertex)
+#         visited.add(vertex)
+#         for neighbor in graph[vertex]:
+#             dfs(graph, neighbor, visited)
+            
+                     
             
 
 # Example usage
