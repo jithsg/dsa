@@ -67,6 +67,30 @@ class Linkedlist:
             current = current.ref
             
         print(f"Node with value {x} not found")
+    def delete_begin(self):
+        if self.head is None:
+            print("Linkedlist is empty")
+            return
+        self.head = self.head.ref
+        
+    
+    def delete_end(self):
+        if self.head is None:
+            print("Linkedlist is empty")
+            return
+        
+        if self.head.ref is None:
+            self.head = None
+            return 
+        
+        current = self.head
+        while current.ref.ref is not None:
+            current = current.ref
+        current.ref = None
+            
+        
+        
+        
             
             
         
@@ -78,4 +102,5 @@ ll.add_begin(1)
 ll.add_end(4)
 ll.add_after(4, 5)
 ll.add_before(5, 0)
+ll.delete_end()
 ll.traverse()

@@ -80,7 +80,7 @@ class Linkedlist:
         
     def delete_last(self):
         if self.head is None:
-            print("Linkedlist is empy")
+            print("Linkedlist is empty")
             return
         if self.head.ref is None: #one node
             self.head =None
@@ -92,7 +92,7 @@ class Linkedlist:
                 
     def delete_by_value(self, x):
         if self.head is None:
-            print("Linkedlist is empy")
+            print("Linkedlist is empty")
             return
         
         if self.head.data== x:
@@ -108,6 +108,11 @@ class Linkedlist:
             
         if current is None:
             print(f"Node with value {x} not found.")
+            
+
+        
+        
+            
                 
     
         
