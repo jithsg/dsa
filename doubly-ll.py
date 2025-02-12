@@ -73,6 +73,35 @@ class Doublylinkedlist:
                 return
             current = current.nref
         print(f"Node with value {x} not found in the list.")
+        
+    
+    def add_before(self, x, data):
+        if self.head is None:
+            print("Doubly Linkedlist is empty")
+            return
+        new_node = Node(data)
+        if self.head.data == x:
+            new_node.nref = self.head
+            self.head.pref = new_node
+            self.head = new_node
+            return 
+        
+        current = self.head
+        while current.nref is not None:
+            if current.nref.data == x:
+                new_node.pref = current
+                new_node.nref = current.nref
+                current.nref.pref = new_node
+                current.nref = new_node
+                
+                return
+            current = current.nref
+            
+            
+        
+            
+                
+        
             
         
         
@@ -85,5 +114,7 @@ dl.insert_begin(30)
 dl.insert_begin(20)
 dl.insert_begin(10)
 dl.add_after(30, 40)
+dl.add_before(10, 0)
+
 
 dl.traverse_forward()
