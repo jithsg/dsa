@@ -35,6 +35,7 @@ class Doublylinkedlist:
     def traverse_forward(self):
         if self.head is None:
             print("Doubly Linkedlist is empty")
+            return
         
         current = self.head
         while current is not None:
@@ -44,6 +45,7 @@ class Doublylinkedlist:
     def traverse_reverse(self):
         if self.head is None:
             print("Doubly Linkedlist is empty")
+            return
             
         current = self.head
         while current.nref is not None:
@@ -53,6 +55,24 @@ class Doublylinkedlist:
         while current is not None:
             print(current.data, end = " <- ")
             current = current.pref
+            
+    def add_after(self, x, data):
+        if self.head is None:
+            print("Doubly Linkedlist is empty")
+            return
+        
+        current = self.head
+        new_node = Node(data)
+        while current is not None:
+            if current.data == x:
+                new_node.nref = current.nref
+                new_node.pref = current
+                if current.nref is not None:
+                    current.nref.pref = new_node
+                current.nref= new_node
+                return
+            current = current.nref
+        print(f"Node with value {x} not found in the list.")
             
         
         
@@ -64,5 +84,6 @@ dl = Doublylinkedlist()
 dl.insert_begin(30)
 dl.insert_begin(20)
 dl.insert_begin(10)
+dl.add_after(30, 40)
 
-dl.traverse_reverse()
+dl.traverse_forward()
