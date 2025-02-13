@@ -125,6 +125,29 @@ class Doublylinkedlist:
         current.nref.pref = None
         current.nref = None
         
+    def delete_by_value(self, x):
+        if self.head is None:
+            print("Doubly Linkedlist is empty")
+            return
+        
+        if self.head.data == x:
+            self.head = self.head.nref
+            if self.head is not None:
+                self.head.pref = None
+            return 
+        current = self.head
+        while current is not None:
+            if current.data == x:
+
+                
+                if current.pref is not None:
+                    current.pref.nref = current.nref
+                if current.nref is not None:
+                    current.nref.pref=  current.pref
+                return
+            current = current.nref
+            
+        print(f"Node with value {x} not found in the list.")
                 
         
             
@@ -145,6 +168,6 @@ dl.add_before(10, 0)
 
 
 dl.traverse_forward()
-dl.delete_end()
+dl.delete_by_value(30)
 
 dl.traverse_forward()
