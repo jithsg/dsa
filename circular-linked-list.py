@@ -67,6 +67,37 @@ class CLL:
             new_node.ref= self.head
             return 
         print(f'{x} is not found')
+        
+    def insert_before(self, x, data):
+        if self.head is None:
+            print("Circular linked list is empty")
+            return 
+        new_node = Node(data)
+        current = self.head
+        if self.head.data == x:
+            while current.ref != self.head:
+                current = current.ref
+            new_node.ref = current.ref
+            current.ref = new_node
+            self.head = new_node
+            return 
+        
+
+        while current.ref != self.head:
+            if current.ref.data == x:
+                new_node.ref = current.ref
+                current.ref = new_node
+                return
+            current = current.ref
+        print(f'{x} is not found')
+        
+            
+            
+        
+     
+        
+        
+        
             
         
             
@@ -79,6 +110,7 @@ cl.insert_begin(2)
 cl.insert_begin(3)
 cl.insert_end(4)
 cl.insert_after(4, 5)
+cl.insert_before(1,0)
 cl.traverse()
 
 
