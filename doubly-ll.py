@@ -97,15 +97,24 @@ class Doublylinkedlist:
                 return
             current = current.nref
             
+    def delete_begin(self):
+        if self.head is None:
+            print("Doubly Linkedlist is empty")
+            return
+        
+        if self.head.nref is None:
+            self.head = None
+            return
+            
+        self.head = self.head.nref
+        self.head.pref = None
+        
+        
+            
             
         
             
-                
-        
-            
-        
-        
-        
+
     
         
         
@@ -117,4 +126,6 @@ dl.add_after(30, 40)
 dl.add_before(10, 0)
 
 
+
+dl.delete_begin()
 dl.traverse_forward()
