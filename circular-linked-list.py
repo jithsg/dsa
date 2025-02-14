@@ -128,7 +128,22 @@ class CLL:
             
         current.ref = self.head.ref
         self.head = self.head.ref
+    
+    def delete_end(self):
+        if self.head is None:
+            print("Circular linked list is empty")
+            return 
+        if self.head.ref == self.head:
+            print(f"Deleted node with value {self.head.data}")
+            self.head = None
+            return
+        current = self.head
         
+        while current.ref.ref != self.head:
+            current = current.ref
+        current.ref = self.head
+        
+            
         
     
         
@@ -152,6 +167,7 @@ cl.insert_end(4)
 cl.insert_after(4, 5)
 cl.insert_before(1,0)
 cl.delete_begin()
+cl.delete_end()
 cl.traverse()
 
 
