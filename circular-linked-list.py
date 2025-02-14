@@ -49,24 +49,24 @@ class CLL:
         new_node.ref= self.head
         
     
-    def insert_after(self, x, data):
-        if self.head is None:
-            print("Circular linked list is empty")
-            return 
+    # def insert_after(self, x, data):
+    #     if self.head is None:
+    #         print("Circular linked list is empty")
+    #         return 
         
-        new_node = Node(data)
-        current = self.head
-        while current.ref != self.head:
-            if current.data == x:
-                new_node.ref = current.ref
-                current.ref = new_node
-                return
-            current= current.ref
-        if current.data == x:
-            current.ref = new_node
-            new_node.ref= self.head
-            return 
-        print(f'{x} is not found')
+    #     new_node = Node(data)
+    #     current = self.head
+    #     while current.ref != self.head:
+    #         if current.data == x:
+    #             new_node.ref = current.ref
+    #             current.ref = new_node
+    #             return
+    #         current= current.ref
+    #     if current.data == x:
+    #         current.ref = new_node
+    #         new_node.ref= self.head
+    #         return 
+    #     print(f'{x} is not found')
         
     def insert_before(self, x, data):
         if self.head is None:
@@ -91,7 +91,47 @@ class CLL:
             current = current.ref
         print(f'{x} is not found')
         
+
+    def insert_after(self, x,data):
+        if self.head is None:
+            print("Circular linked list is empty")
+            return 
+        
+        new_node = Node(data)
+        current = self.head
+        
+        while True:
+            if current.data == x:
+                new_node.ref = current.ref
+                current.ref = new_node
+                return 
+            current = current.ref
+            if current == self.head:
+                break
             
+        print(f'{x} is not found')
+        
+        
+    def delete_begin(self):
+        if self.head is None:
+            print("Circular linked list is empty")
+            return 
+        if self.head.ref == self.head:
+            print(f"Deleted node with value {self.head.data}")
+            self.head = None
+            return
+        current = self.head
+        while True:
+            if current.ref == self.head:
+                break
+            current = current.ref
+            
+        current.ref = self.head.ref
+        self.head = self.head.ref
+        
+        
+    
+        
             
         
      
@@ -111,6 +151,7 @@ cl.insert_begin(3)
 cl.insert_end(4)
 cl.insert_after(4, 5)
 cl.insert_before(1,0)
+cl.delete_begin()
 cl.traverse()
 
 
