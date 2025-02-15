@@ -44,6 +44,24 @@ class BST:
         while current.right is not None:
             current= current.right
         return current.data 
+    
+    def search(self, x):
+        current = self
+        
+        while current is not None:
+            if current.data == x:
+                print("value found")
+                return 
+            elif x < current.data:
+                current = current.left
+                
+            elif x > current.data:
+                current = current.right
+            
+       
+            
+            
+                
             
 
 root = BST(50)
@@ -52,4 +70,4 @@ root.insert(25)
 root.insert(100)
 root.insert(125)
 
-print(root.find_max())
+root.search(10)
