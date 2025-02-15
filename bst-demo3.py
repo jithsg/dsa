@@ -57,6 +57,35 @@ class BST:
                 
             elif x > current.data:
                 current = current.right
+    
+    def delete(self, data):
+        
+        if data < self.data:
+            if self.left:
+                self.left = self.left.delete(data)
+            return self
+            
+        if data > self.data:
+            if self.right:
+                self.right = self.right.delete(data)
+            return self
+            
+        if data == self.data:
+            if self.left is None and self.right is None:
+                return None
+            
+            if self.left is None:
+                return self.right
+            if self.right is None:
+                return self.left
+            
+            if self.left and self.right:
+                
+                inorder_successor = self.right.find_min()
+                self.data = inorder_successor
+                self.right = self.right.delete(inorder_successor)
+                return self
+        
             
        
             
@@ -70,4 +99,5 @@ root.insert(25)
 root.insert(100)
 root.insert(125)
 
-root.search(10)
+root.delete(100)
+root.inorder()
