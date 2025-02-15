@@ -86,7 +86,32 @@ class BST:
                 self.right = self.right.delete(inorder_successor)
                 return self
         
-            
+    def insert_1(self, data):
+        
+        if data < self.data:
+            if self.left:
+                self.left.insert_1(data)
+            else:
+                self.left = BST(data)
+        
+        else:
+            if self.right:
+                self.right.insert_1(data)
+            else:
+                self.right = BST(data)
+    
+    def inorder_1(self):
+         if self.left:
+             self.left.inorder_1()
+         print(self.data)
+         
+         if self.right:
+             self.right.inorder_1()
+             
+    def find_min1(self):
+        if self.left is None:
+            return self.data
+        return self.left.find_min1()
        
             
             
@@ -94,10 +119,10 @@ class BST:
             
 
 root = BST(50)
-root.insert(10)
+root.insert_1(10)
 root.insert(25)
 root.insert(100)
 root.insert(125)
 
-root.delete(100)
-root.inorder()
+
+print(root.find_min1())
