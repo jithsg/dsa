@@ -69,6 +69,41 @@ class BST:
             
         return current.data
     
+    def delete(self, data):
+        
+        if data < self.data:
+            if self.left:
+                self.left = self.left.delete(data)
+                return self
+            
+        if data> self.data:
+            if self.right:
+                self.right = self.right.delete(data)
+                return self
+            
+        if data == self.data:
+            if self.left is None and self.right is None:
+                return None
+            
+            if self.left is None:
+                return self.right
+            
+            if self.right is None:
+                return self.left
+            
+            
+            if self.left and self.right:
+                
+                inorder_successor = self.right.find_min()
+                
+                self.data = inorder_successor
+                
+                self.right = self.right.delete(inorder_successor)
+                
+                return self
+    
+    
+    
 
             
         
@@ -86,5 +121,5 @@ root.insert(40)
 root.insert(60)
 root.insert(80)
 
-
-print(root.find_max())
+root.delete(70)
+root.inorder()
