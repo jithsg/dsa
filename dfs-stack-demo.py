@@ -1,9 +1,11 @@
+from collections import deque
 def dfs(graph, start):
-    stack = [start]
+    queue = deque()
+    queue.append(start)
     visited = []
     
-    while stack:
-        current = stack.pop()
+    while queue:
+        current = queue.popleft()
         if current not in visited:
             visited.append(current)
             print(current)
@@ -11,7 +13,7 @@ def dfs(graph, start):
         
         for neighbor in graph[current]:
             if neighbor not in visited:
-                stack.append(neighbor)
+                queue.append(neighbor)
             
 
 graph = {
