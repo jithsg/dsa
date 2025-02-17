@@ -22,15 +22,32 @@ def are_all_nodes_visited(graph, start):
         print("All nodes are visited, graph is connected")
     else:
         print("All nodes are not visited")
+        
+# def visited_disconned_graph(graph, start):
+#     components = []
+#     unvisited = set(graph.keys())
+#     print(unvisited)
+    
+    # while unvisited:
+    #     start = next(iter(unvisited))  # Get any unvisited node
+    #     visited = dfs(graph, start)
+    #     components.append(visited)
+    #     unvisited -= visited
+    
+    # return components
+
+
+    
 
                 
 graph = {
         'A': ['B', 'C'],
-        'B': ['A', 'D', 'E'],
-        'C': ['A'],
-        'D': ['B'],
-        'E': [],
-        'F': []
+        'B': ['A', 'C'],
+        'C': ['A', 'B', 'D'],
+        'D': ['C'],
+
     }
 
-are_all_nodes_visited(graph, 'A')
+print(visited_disconned_graph(graph, 'A'))
+
+        # 'E':['F', 'G'], 'F':['E'], 'G':['E']
